@@ -878,6 +878,11 @@ require('lazy').setup({
         return '%2l:%-2v'
       end
 
+      local disable_mini_statusline = function(args)
+        vim.b[args.buf].ministatusline_disable = true
+      end
+      vim.api.nvim_create_autocmd('Filetype', { pattern = 'neo-tree', callback = disable_mini_statusline })
+
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
