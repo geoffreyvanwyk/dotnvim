@@ -32,9 +32,6 @@
 
 --]]
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 -- Print the line number in front of each line. 
 vim.opt.number = true
 

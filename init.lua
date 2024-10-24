@@ -26,6 +26,13 @@
 
 --]]
 
+-- Prefix for special key mappings.
+vim.g.mapleader      = " "   -- For global mappings.
+vim.g.maplocalleader = "\\"  -- For mappings local to a buffer.
+
+-- lazy.nvim is a modern plugin manager for Neovim.
+require('config.lazy')
+
 -- Vim has a number of internal variables and switches which can be set to
 -- achieve special effects.
 require('config.options')
@@ -41,6 +48,3 @@ require('config.commands')
 -- exiting Vim.
 require('config.autocommands')
 
--- lazy.nvim is a modern plugin manager for Neovim.
-require('config.lazy')
-	
