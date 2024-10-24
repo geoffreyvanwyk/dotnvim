@@ -57,3 +57,7 @@ vim.opt.undofile = true
 -- search term.
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+-- Colorscheme
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox-material]])
