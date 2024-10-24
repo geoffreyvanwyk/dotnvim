@@ -42,6 +42,9 @@ vim.opt.relativenumber = true
 -- Highlight the text line of the cursor. Useful to easily spot the cursor.
 vim.opt.cursorline = true
 
+-- Statusline shows the mode.
+vim.opt.showmode = false
+
 -- Enable mouse support in all modes.
 vim.opt.mouse = 'a'
 
