@@ -1,7 +1,7 @@
 return {
     {
         --[[
-                Neovim plugin for splitting/joining blocks of code like arrays,
+                Plugin for splitting or joining blocks of code like arrays,
                 hashes, statements, objects, dictionaries, etc.
         --]]
         'Wansmer/treesj',

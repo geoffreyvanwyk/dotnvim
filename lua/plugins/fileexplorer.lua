@@ -1,5 +1,5 @@
 return {
-  'simonmclean/triptych.nvim',
+  'geoffreyvanwyk/triptych.nvim',
   event = 'VeryLazy',
   dependencies = {
     'nvim-lua/plenary.nvim', -- required
