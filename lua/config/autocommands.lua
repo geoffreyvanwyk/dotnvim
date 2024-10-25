@@ -26,6 +26,7 @@
 
 	You can specify commands to be executed automatically when reading or writing
 	a file, when entering or leaving a buffer or window, and when exiting Vim.
+
 --]]
 
 --[[

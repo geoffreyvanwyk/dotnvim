@@ -23,6 +23,7 @@
 		boolean		can only be on or off
 		number		has a numeric value
 		string		has a string value
+
 --]]
 
 --[[
@@ -32,32 +33,44 @@
 
 --]]
 
--- Print the line number in front of each line. 
-vim.opt.number = true
+---- SEARCHING & PATTERNS -----------------------------------------------------
 
--- Show the line number relative to the line with the cursor in front of each
--- line. To help with jumping.
-vim.opt.relativenumber = true
+vim.opt.ignorecase = true  -- ignore case when using a search pattern
+vim.opt.smartcase  = true  -- override 'ignorecase' when pattern has upper case 
+                           -- characters
 
--- Highlight the text line of the cursor. Useful to easily spot the cursor.
-vim.opt.cursorline = true
+---- DISPLAYING TEXT ----------------------------------------------------------
 
--- Statusline shows the mode.
-vim.opt.showmode = false
+vim.opt.wrap           = false  -- long lines wrap
+vim.opt.number         = true   -- show the line number for each line
+vim.opt.relativenumber = true   -- show the relative line number for each line
+                                -- makes it easier to jump from line to line
 
--- Enable mouse support in all modes.
-vim.opt.mouse = 'a'
+---- SYNTAX, HIGHLIGHTING & SPELLING ------------------------------------------
 
--- When on, Neovim automatically saves undo history to an undo file when writing a
--- buffer to a file, and restores undo history from the same file on buffer
--- read.
-vim.opt.undofile = true
+vim.opt.cursorline = true  -- highlight the screen line of the cursor
 
--- Case-insensitive searching UNLESS \C or one or more capital letters in the
--- search term.
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+---- USING THE MOUSE ----------------------------------------------------------
 
--- Colorscheme
-vim.o.background = "dark" -- or "light" for light mode
-vim.cmd([[colorscheme gruvbox-material]])
+vim.opt.mouse = 'a'  -- list of flags for using the mouse 
+                     -- enable mouse support in all modes
+
+---- MESSAGES & INFO ----------------------------------------------------------
+
+vim.opt.showmode = false  -- display the current mode below the statusline
+                          -- not necessary because statusline shows mode
+
+---- EDITING TEXT ---------------------------------------------------------
+
+vim.opt.undofile = true  -- automatically save and restore undo history
+
+---- TABS & INDENTING ---------------------------------------------------------
+
+vim.opt.smartindent = true  -- do clever autoindenting
+vim.opt.expandtab   = true  -- expand <Tab> to spaces in Insert mode
+vim.opt.softtabstop = 4     -- if non-zero, number of spaces to insert for a 
+                            -- <Tab>
+vim.opt.tabstop     = 4     -- number of spaces a <Tab> in the text stands for
+vim.opt.shiftwidth  = 4     -- number of spaces used for each step of 
+                            -- (auto)indent
+

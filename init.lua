@@ -12,11 +12,8 @@
 ░░░░ ░░░░░  ░░░░░░   ░░░░░░     ░░░░░    ░░░░░ ░░░░░ ░░░ ░░░░░ 
                                                                
 
-		Banners created with: 
-			https://manytools.org/hacker-tools/ascii-banner/ 
-		using font: 
-			DOS Rebel
-                                                               
+	hyperextensible Vim-based text editor                                       
+
 --]]
 
 --[[
@@ -26,25 +23,25 @@
 
 --]]
 
--- Prefix for special key mappings.
-vim.g.mapleader      = " "   -- For global mappings.
-vim.g.maplocalleader = "\\"  -- For mappings local to a buffer.
+require('lazy.bootstrap')
 
--- lazy.nvim is a modern plugin manager for Neovim.
-require('config.lazy')
+require('config.globals')
 
--- Vim has a number of internal variables and switches which can be set to
--- achieve special effects.
 require('config.options')
 
--- Key mapping is used to change the meaning of typed keys.
+require('lazy.setup')
+
 require('config.mappings')
 
--- It is possible to define your own Ex commands. 
 require('config.commands')
 
--- You can specify commands to be executed automatically when reading or
--- writing a file, when entering or leaving a buffer or window, and when
--- exiting Vim.
 require('config.autocommands')
 
+--[[
+
+	Banners created with: 
+		https://manytools.org/hacker-tools/ascii-banner/ 
+	using font: 
+		DOS Rebel
+
+--]]
