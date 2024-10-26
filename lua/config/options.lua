@@ -48,7 +48,9 @@ vim.opt.relativenumber = true   -- show the relative line number for each line
 
 ---- SYNTAX, HIGHLIGHTING & SPELLING ------------------------------------------
 
-vim.opt.cursorline = true  -- highlight the screen line of the cursor
+vim.opt.background = 'light'  -- "dark" or "light"; the background color
+                              -- brightness
+vim.opt.cursorline = true     -- highlight the screen line of the cursor
 
 ---- USING THE MOUSE ----------------------------------------------------------
 
