@@ -33,10 +33,12 @@
 
 --]]
 
+-- stylua: ignore start
+
 ---- SEARCHING & PATTERNS -----------------------------------------------------
 
 vim.opt.ignorecase = true  -- ignore case when using a search pattern
-vim.opt.smartcase  = true  -- override 'ignorecase' when pattern has upper case 
+vim.opt.smartcase  = true  -- override 'ignorecase' when pattern has upper case
                            -- characters
 
 ---- DISPLAYING TEXT ----------------------------------------------------------
@@ -48,14 +50,14 @@ vim.opt.relativenumber = true   -- show the relative line number for each line
 
 ---- SYNTAX, HIGHLIGHTING & SPELLING ------------------------------------------
 
-vim.opt.background    = 'light'  -- "dark" or "light"; the background color
-                                 -- brightness
-vim.opt.cursorline    = true     -- highlight the screen line of the cursor
-vim.opt.termguicolors = true     -- use GUI colors for the terminal
+vim.opt.background    = "dark"  -- "dark" or "light"; the background color
+                                -- brightness
+vim.opt.cursorline    = true    -- highlight the screen line of the cursor
+vim.opt.termguicolors = true    -- use GUI colors for the terminal
 
 ---- USING THE MOUSE ----------------------------------------------------------
 
-vim.opt.mouse = 'a'  -- list of flags for using the mouse 
+vim.opt.mouse = "a"  -- list of flags for using the mouse
                      -- enable mouse support in all modes
 
 ---- MESSAGES & INFO ----------------------------------------------------------
@@ -71,9 +73,7 @@ vim.opt.undofile = true  -- automatically save and restore undo history
 
 vim.opt.smartindent = true  -- do clever autoindenting
 vim.opt.expandtab   = true  -- expand <Tab> to spaces in Insert mode
-vim.opt.softtabstop = 4     -- if non-zero, number of spaces to insert for a 
+vim.opt.softtabstop = 4     -- if non-zero, number of spaces to insert for a
                             -- <Tab>
 vim.opt.tabstop     = 4     -- number of spaces a <Tab> in the text stands for
-vim.opt.shiftwidth  = 4     -- number of spaces used for each step of 
-                            -- (auto)indent
-
+vim.opt.shiftwidth  = 4     -- number of spaces for each step of (auto)indent

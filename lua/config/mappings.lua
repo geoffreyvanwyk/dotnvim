@@ -28,75 +28,119 @@
 
 --]]
 
+local M = {}
 
----- WHICHKEY GROUPS ----------------------------------------------------------
+---- <leader> -----------------------------------------------------------------
+
+vim.keymap.set("n", "<leader>?", function()
+	require("which-key").show({ global = false })
+end, { desc = "Buffer Local" })
+
+-------- WHICHKEY GROUPS ------------------------------------------------------
 
 require("which-key").add({
-	{ 
-        "<leader>b", 
-        group = "[B]uffers", 
-        expand = function()
-            return require("which-key.extras").expand.buf()
-        end 
-    },
+	{
+		"<leader>b",
+		group = "[B]uffers",
+		expand = function()
+			return require("which-key.extras").expand.buf()
+		end,
+	},
+	{ "<leader>c", group = "[C]ode" },
 	{ "<leader>e", group = "[E]diting" },
 	{ "<leader>f", group = "[F]iles" },
+	{ "<leader>s", group = "[S]earch" },
+	{ "<leader>t", group = "[T]oggle" },
 	{ "<leader>w", group = "[W]indows", proxy = "<c-w>" },
 })
 
----- BUFFERS ------------------------------------------------------------------
+-------- BUFFERS --------------------------------------------------------------
 
-vim.keymap.set(
-    'n',
-    '<leader>bn',
-    ':bfirst<enter>',
-    { desc = '[B]uffer [F]irst' }
-)
-vim.keymap.set(
-    'n',
-    '<leader>bn',
-    ':blast<enter>',
-    { desc = '[B]uffer [L]ast' }
-)
-vim.keymap.set(
-    'n',
-    '<leader>bn',
-    ':bnext<enter>',
-    { desc = '[B]uffer [N]ext' }
-)
-vim.keymap.set(
-    'n',
-    '<leader>bp',
-    ':bprevious<enter>',
-    { desc = '[B]uffer [P]revious' }
-)
-vim.keymap.set(
-    'n',
-    '<leader>bd',
-    ':bdelete<enter>',
-    { desc = '[B]uffer [D]elete' }
-)
+vim.keymap.set("n", "<leader>bf", ":bfirst<enter>", { desc = "[F]irst" })
+vim.keymap.set("n", "<leader>bl", ":blast<enter>", { desc = "[L]ast" })
+vim.keymap.set("n", "<leader>bn", ":bnext<enter>", { desc = "[N]ext" })
+vim.keymap.set("n", "<leader>bp", ":bprevious<enter>", { desc = "[P]revious" })
+vim.keymap.set("n", "<leader>bd", ":bdelete<enter>", { desc = "[D]elete" })
 
----- EDITING ------------------------------------------------------------------
+-------- CODE -----------------------------------------------------------------
 
-vim.keymap.set(
-    'n',
-    '<leader>es',
-    ':TSJSplit<enter>',
-    { desc = '[E]dit [S]plit Code Block' }
-)
-vim.keymap.set(
-    'n',
-    '<leader>ej',
-    ':TSJJoin<enter>',
-    { desc = '[E]dit [J]oin Code Block' }
-)
+M.leader_mappings_for_code = function(event)
+	local map = function(keys, func, desc, mode)
+		mode = mode or "n"
+		vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+	end
 
----- FILES --------------------------------------------------------------------
+	-- Execute a code action, usually your cursor needs to be on top of an error
+	-- or a suggestion from your LSP for this to activate.
+	map("<leader>ca", vim.lsp.buf.code_action, "[A]ctions", { "n", "x" })
 
-vim.keymap.set(
-    'n',
-    '<leader>fe',
-    ':Triptych<enter>',
-    { desc = '[F]ile [E]xplorer' }
-)
+	-- Jump to the implementation of the word under your cursor.
+	--  Useful when your language has ways of declaring types without an actual implementation.
+	map("<leader>ci", require("telescope.builtin").lsp_implementations, "[I]mplementation")
+
+	-- Rename the variable under your cursor.
+	--  Most Language Servers support renaming across files, etc.
+	map("<leader>cr", vim.lsp.buf.rename, "[R]ename Symbol")
+
+	require("which-key").add({ { "cs", group = "[S]ymbols" } })
+
+	-- Fuzzy find all the symbols in your current buffer.
+	--  Symbols are things like variables, functions, types, etc.
+	map("<leader>csb", require("telescope.builtin").lsp_document_symbols, "In [B]uffer")
+
+	-- Fuzzy find all the symbols in your current workspace.
+	--  Similar to document symbols, except searches over your entire project.
+	map("<leader>csw", require("telescope.builtin").lsp_dynamic_workspace_symbols, "In [W]orkspace")
+
+	-- Jump to the type of the word under your cursor.
+	--  Useful when you're not sure what type a variable is and you want to see
+	--  the definition of its *type*, not where it was *defined*.
+	map("<leader>ct", require("telescope.builtin").lsp_type_definitions, "[T]ype Definition")
+
+	-- Find references for the word under your cursor.
+	map("<leader>cR", require("telescope.builtin").lsp_references, "[R]eferences")
+end
+
+-------- EDITING --------------------------------------------------------------
+
+vim.keymap.set("n", "<leader>es", ":TSJSplit<enter>", { desc = "[S]plit Code Block" })
+vim.keymap.set("n", "<leader>ej", ":TSJJoin<enter>", { desc = "[J]oin Code Block" })
+vim.keymap.set("n", "<leader>ef", function()
+	require("conform").format({ async = true, lsp_format = "fallback" })
+end, { desc = "[F]ormat Buffer" })
+
+-------- FILES ----------------------------------------------------------------
+
+vim.keymap.set("n", "<leader>fe", ":Triptych<enter>", { desc = "[E]xplorer" })
+
+-------- TOGGLE ---------------------------------------------------------------
+
+M.mappings_for_inlay_hints = function(event)
+	vim.keymap.set("n", "<leader>th", function()
+		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+	end, {
+		buffer = event.buf,
+		desc = "LSP: " .. "[T]oggle Inlay [H]ints",
+	})
+end
+
+---- SEARCHING & PATTERNS -----------------------------------------------------
+
+vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<enter>")
+
+---- GO TO --------------------------------------------------------------------
+
+M.mappings_for_goto_code = function(event)
+	vim.keymap.set(
+		"n",
+		"gd",
+		require("telescope.builtin").lsp_definitions,
+		{ buffer = event.buf, desc = "LSP: " .. "[G]oto [D]efinition" }
+	)
+
+	-- WARN: This is not Goto Definition, this is Goto Declaration.
+	--  For example, in C this would take you to the header.
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = event.buf, desc = "LSP: " .. "[G]oto [D]eclaration" })
+end
+
+return M

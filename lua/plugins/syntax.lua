@@ -30,39 +30,50 @@
 --]]
 
 return {
-    {
-        --[[
-            The goal of nvim-treesitter is both to provide a simple and easy
-            way to use the interface for tree-sitter in Neovim and to provide
-            some basic functionality such as highlighting based on it.
+	{
+		--[[
+        The goal of nvim-treesitter is both to provide a simple and easy
+        way to use the interface for tree-sitter in Neovim and to provide
+        some basic functionality such as highlighting based on it.
         --]]
 
-        'nvim-treesitter/nvim-treesitter',
+		"nvim-treesitter/nvim-treesitter",
 
-        build = ':TSUpdate',
-        main  = 'nvim-treesitter.configs',  -- Sets main module to use for opts
+		build = ":TSUpdate",
+		main = "nvim-treesitter.configs", -- Sets main module to use for opts
 
-        opts = {
-          auto_install          = true,               -- Autoinstall languages
-                                                      -- that are not installed
-          highlight             = { enable = true }, 
-          incremental_selection = { enable = true },
-          indent                = { enable = true },
-        },
-    },
-    {
-        --[[
+		opts = {
+			auto_install = true, -- Autoinstall languages
+			-- that are not installed
+			highlight = { enable = true },
+			incremental_selection = { enable = true },
+			indent = { enable = true },
+		},
+	},
+	{
+		--[[
             Shows context of currently visible buffer content. 
         --]]
 
-        'nvim-treesitter/nvim-treesitter-context',
-    },
-    {
-        --[[
-            Syntax aware text-objects, select, move, swap, and peek support.
+		"nvim-treesitter/nvim-treesitter-context",
+	},
+	{
+		--[[
+        Syntax aware text-objects, select, move, swap, and peek support.
         --]]
 
-        'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-} 
+		"nvim-treesitter/nvim-treesitter-textobjects",
+	},
+	{
+		--[[
+         Highlight and search for todo comments like TODO, HACK, BUG in
+         your code base.
+        --]]
 
+		"folke/todo-comments.nvim",
+
+		dependencies = { "nvim-lua/plenary.nvim" },
+
+		opts = {},
+	},
+}
