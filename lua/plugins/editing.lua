@@ -52,12 +52,52 @@ return {
 		dependencies = { "hrsh7th/nvim-cmp" },
 
 		config = function()
-			require("nvim-autopairs").setup({})
+			require("nvim-autopairs").setup({
+				fast_wrap = {},
+			})
 
 			-- If you want to automatically add `(` after selecting a function or method
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			local cmp = require("cmp")
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
+	},
+	{
+		"abecodes/tabout.nvim",
+
+		event = "InsertCharPre", -- Set the event to 'InsertCharPre' for better compatibility
+
+		priority = 1000,
+
+		lazy = false,
+
+		opts = {},
+
+		dependencies = { -- These are optional
+			"nvim-treesitter/nvim-treesitter",
+			{
+				"L3MON4D3/LuaSnip",
+
+				keys = function()
+					-- Disable default tab keybinding in LuaSnip
+					return {}
+				end,
+			},
+			"hrsh7th/nvim-cmp",
+		},
+	},
+	{
+		--[[
+        Add/change/delete surrounding delimiter pairs with ease. Written with ❤️
+        in Lua.
+        --]]
+
+		"kylechui/nvim-surround",
+
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+
+		event = "VeryLazy",
+
+		opts = {},
 	},
 }
