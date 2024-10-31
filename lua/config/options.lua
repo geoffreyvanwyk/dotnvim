@@ -35,41 +35,51 @@
 
 -- stylua: ignore start
 
----- SEARCHING & PATTERNS -----------------------------------------------------
+---- (2) MOVING AROUND, SEARCHING & PATTERNS ----------------------------------
 
 vim.opt.ignorecase = true  -- ignore case when using a search pattern
 vim.opt.smartcase  = true  -- override 'ignorecase' when pattern has upper case
                            -- characters
 
----- DISPLAYING TEXT ----------------------------------------------------------
+---- (4) DISPLAYING TEXT ------------------------------------------------------
 
 vim.opt.wrap           = false  -- long lines wrap
 vim.opt.number         = true   -- show the line number for each line
 vim.opt.relativenumber = true   -- show the relative line number for each line
                                 -- makes it easier to jump from line to line
 
----- SYNTAX, HIGHLIGHTING & SPELLING ------------------------------------------
+---- (5) SYNTAX, HIGHLIGHTING & SPELLING --------------------------------------
 
 vim.opt.background    = "dark"  -- "dark" or "light"; the background color
                                 -- brightness
 vim.opt.cursorline    = true    -- highlight the screen line of the cursor
 vim.opt.termguicolors = true    -- use GUI colors for the terminal
 
----- USING THE MOUSE ----------------------------------------------------------
+---- (9) USING THE MOUSE ------------------------------------------------------
 
 vim.opt.mouse = "a"  -- list of flags for using the mouse
                      -- enable mouse support in all modes
 
----- MESSAGES & INFO ----------------------------------------------------------
+---- (10) MESSAGES & INFO -----------------------------------------------------
 
 vim.opt.showmode = false  -- display the current mode below the statusline
                           -- not necessary because statusline shows mode
 
----- EDITING TEXT ---------------------------------------------------------
+---- (11) SELECTING TEXT ------------------------------------------------------
+
+-- Schedule setting of options after `UiEnter` event in-case they might
+-- increase start-up time.
+vim.schedule(function()
+  vim.opt.clipboard = "unnamedplus"  -- "unnamed" to use the * register like unnamed register
+	                                 -- "autoselect" to always put selected text on the clipboard
+                                     -- "unnamedplus" to synchronize + register with system clipboard
+end)
+
+---- (12) EDITING TEXT --------------------------------------------------------
 
 vim.opt.undofile = true  -- automatically save and restore undo history
 
----- TABS & INDENTING ---------------------------------------------------------
+---- (13) TABS & INDENTING ----------------------------------------------------
 
 vim.opt.smartindent = true  -- do clever autoindenting
 vim.opt.expandtab   = true  -- expand <Tab> to spaces in Insert mode
