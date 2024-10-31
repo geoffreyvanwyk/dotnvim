@@ -23,19 +23,19 @@
 
 --]]
 
-require('lazy.bootstrap')
+require("lazy.bootstrap")
 
-require('config.globals')
+require("config.globals")
 
-require('config.options')
+require("config.options")
 
-require('lazy.setup')
+require("lazy.setup")
 
-require('config.mappings')
+require("config.mappings")
 
-require('config.commands')
+require("config.commands")
 
-require('config.autocommands')
+require("config.autocommands")
 
 --[[
 
