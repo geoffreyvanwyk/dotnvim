@@ -128,7 +128,7 @@ vim.keymap.set("n", "<leader>f.", require("telescope.builtin").oldfiles, { desc 
 
 vim.keymap.set("n", "<leader>fn", function()
 	require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
-end, { desc = "[N]eovim files" })
+end, { desc = "Neovim files" })
 
 -------- SEARCH ---------------------------------------------------------------
 
