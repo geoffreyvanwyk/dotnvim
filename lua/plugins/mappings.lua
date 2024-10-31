@@ -20,29 +20,23 @@
 
 --]]
 
+--[[
+
+    Howbeit we speak wisdom among them that are perfect: yet not the wisdom of this
+    world, nor of the princes of this world, that come to nought:
+    (1 Corinthians 2:6 KJV)
+
+--]]
+
 return {
-    --[[
+	--[[
         helps you remember your Neovim keymaps, by showing available keybindings in
         a popup as you type.
     --]]
-    
-    "folke/which-key.nvim",
 
-    event = "VeryLazy",
+	"folke/which-key.nvim",
 
-    opts = {
-        preset = "modern",
-    },
+	event = "VeryLazy",
 
-    keys = {
-        {
-            "<leader>?",
-
-            function()
-                require("which-key").show({ global = false })
-            end,
-
-            desc = "Buffer Local",
-        },
-    },
+	opts = { preset = "modern" },
 }
