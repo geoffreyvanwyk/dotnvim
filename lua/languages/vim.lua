@@ -39,10 +39,9 @@
 --]]
 
 return {
-    {
-        'nvim-treesitter/nvim-treesitter',
+	{
+		"nvim-treesitter/nvim-treesitter",
 
-        optional = true,
-        opts     = { ensure_installed = { 'vim', 'vimdoc' } },
-    },
+		opts = { ensure_installed = { "vim", "vimdoc" } },
+	},
 }

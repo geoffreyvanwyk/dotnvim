@@ -24,10 +24,9 @@
 --]]
 
 return {
-    {
-        'nvim-treesitter/nvim-treesitter',
+	{
+		"nvim-treesitter/nvim-treesitter",
 
-        optional = true,
-        opts     = { ensure_installed = { 'c' } },
-    },
+		opts = { ensure_installed = { "c" } },
+	},
 }
