@@ -152,7 +152,7 @@ vim.keymap.set("n", "<leader>sr", require("telescope.builtin").resume, { desc = 
 
 -------- TOGGLE ---------------------------------------------------------------
 
-M.mappings_for_inlay_hints = function(event)
+M.leader_mappings_for_inlay_hints = function(event)
 	vim.keymap.set("n", "<leader>th", function()
 		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 	end, {
