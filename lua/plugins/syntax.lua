@@ -52,7 +52,7 @@ return {
 	},
 	{
 		--[[
-            Shows context of currently visible buffer content. 
+        Shows context of currently visible buffer content. 
         --]]
 
 		"nvim-treesitter/nvim-treesitter-context",
@@ -73,6 +73,17 @@ return {
 		"folke/todo-comments.nvim",
 
 		dependencies = { "nvim-lua/plenary.nvim" },
+
+		opts = {},
+	},
+	{
+		--[[
+        Indent guides for Neovim
+        --]]
+
+		"lukas-reineke/indent-blankline.nvim",
+
+		main = "ibl",
 
 		opts = {},
 	},
