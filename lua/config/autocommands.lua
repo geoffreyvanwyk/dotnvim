@@ -86,7 +86,7 @@ M.autocmds_for_lsp = function()
 			--
 			-- This may be unwanted, since they displace some of your code
 			if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-				require("config.mappings").mappings_for_inlay_hints(event)
+				require("config.mappings").leader_mappings_for_inlay_hints(event)
 			end
 		end,
 	})
