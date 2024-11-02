@@ -71,6 +71,7 @@ vim.keymap.set("n", "<leader><leader>", require("telescope.builtin").buffers, { 
 vim.keymap.set("n", "<leader>bf", ":bfirst<enter>", { desc = "First" })
 vim.keymap.set("n", "<leader>bl", ":blast<enter>", { desc = "Last" })
 vim.keymap.set("n", "<leader>bn", ":bnext<enter>", { desc = "Next" })
+vim.keymap.set("n", "<leader>bm", ":bmodified<enter>", { desc = "Next Modified" })
 vim.keymap.set("n", "<leader>bp", ":bprevious<enter>", { desc = "Previous" })
 vim.keymap.set("n", "<leader>bd", ":bdelete<enter>", { desc = "Delete" })
 
