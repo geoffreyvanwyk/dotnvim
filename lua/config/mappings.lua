@@ -80,8 +80,8 @@ vim.keymap.set("n", "<leader>bd", ":bdelete<enter>", { desc = "Delete" })
 vim.keymap.set("n", "<leader>bD", ":%bdelete<enter>", { desc = "Delete All" })
 
 require("which-key").add({ { "<leader>be", group = "Empty Buffer" } })
-vim.keymap.set("n", "<leader>bee", ":enew", { desc = "Current Window" })
-vim.keymap.set("n", "<leader>bev", ":vnew", { desc = "Vertical Split" })
+vim.keymap.set("n", "<leader>bee", ":enew<enter>", { desc = "Current Window" })
+vim.keymap.set("n", "<leader>bev", ":vnew<enter>", { desc = "Vertical Split" })
 
 -------- CODE -----------------------------------------------------------------
 
