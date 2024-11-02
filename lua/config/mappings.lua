@@ -74,6 +74,7 @@ vim.keymap.set("n", "<leader>bn", ":bnext<enter>", { desc = "Next" })
 vim.keymap.set("n", "<leader>bm", ":bmodified<enter>", { desc = "Next Modified" })
 vim.keymap.set("n", "<leader>bp", ":bprevious<enter>", { desc = "Previous" })
 vim.keymap.set("n", "<leader>bd", ":bdelete<enter>", { desc = "Delete" })
+vim.keymap.set("n", "<leader>bD", ":%bdelete<enter>", { desc = "Delete All" })
 
 -------- CODE -----------------------------------------------------------------
 
