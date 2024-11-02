@@ -157,8 +157,14 @@ end
 
 -------- EDIT -----------------------------------------------------------------
 
-vim.keymap.set("n", "<leader>es", ":TSJSplit<enter>", { desc = "Split Code Block" })
-vim.keymap.set("n", "<leader>ej", ":TSJJoin<enter>", { desc = "Join Code Block" })
+vim.keymap.set("n", "<leader>es", function()
+	require("treesj").split()
+end, { desc = "Split Code Block" })
+
+vim.keymap.set("n", "<leader>ej", function()
+	require("treesj").join()
+end, { desc = "Join Code Block" })
+
 vim.keymap.set("n", "<leader>ef", function()
 	require("conform").format({ async = true, lsp_format = "fallback" })
 end, { desc = "Format Buffer" })
