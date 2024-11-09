@@ -103,7 +103,7 @@ M.leader_mappings_for_code = function(event)
 	--  Most Language Servers support renaming across files, etc.
 	map("<leader>cr", vim.lsp.buf.rename, "Rename Symbol")
 
-	require("which-key").add({ { "cs", group = "Symbols" } })
+	require("which-key").add({ { "<leader>cs", group = "Symbols" } })
 
 	-- Fuzzy find all the symbols in your current buffer.
 	--  Symbols are things like variables, functions, types, etc.
