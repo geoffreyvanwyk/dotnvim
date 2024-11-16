@@ -27,8 +27,9 @@
 
 --]]
 
+-- stylua: ignore start
 
----- PREFIX FOR SPECIAL KEY MAPPINGS ------------------------------------------ 
+---- PREFIX FOR SPECIAL KEY MAPPINGS ------------------------------------------
 
 vim.g.mapleader      = " "   -- For global mappings.
 vim.g.maplocalleader = "\\"  -- For mappings local to a buffer.
