@@ -45,7 +45,7 @@ return {
 
 	---- EXTERNAL TOOL INSTALLATION ----------------------------------------------
 	{
-		"WhoIsSethDaniel/mason-tool-installer",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 		opts = {
 			ensure_installed = {

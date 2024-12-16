@@ -101,7 +101,7 @@ return {
         Install and upgrade third party tools automatically
         --]]
 
-		"WhoIsSethDaniel/mason-tool-installer",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 		opts = {},
 	},
