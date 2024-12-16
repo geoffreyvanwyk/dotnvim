@@ -27,9 +27,45 @@
 --]]
 
 return {
+	---- SYNTAX HIGHLIGHTING ------------------------------------------------------
 	{
 		"nvim-treesitter/nvim-treesitter",
 
 		opts = { ensure_installed = { "html" } },
 	},
+	---- EXTERNAL TOOL INSTALLATION -----------------------------------------------
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+
+		opts = {
+			ensure_installed = {
+				"emmet-language-server",
+			},
+		},
+	},
+	---- LANGUAGE SERVER CONFIGURATION -------------------------------------------
+	{
+		"williamboman/mason-lspconfig.nvim",
+
+		opts = {
+			handlers = {
+				emmet_language_server = function()
+					require("lspconfig").emmet_language_server.setup({})
+				end,
+			},
+		},
+	},
+	---- EMMET & NEOVIM INTEGRATION ----------------------------------------------
+    {
+        "olrtg/nvim-emmet",
+
+        config = function()
+            -- TODO: Move to mappings script
+            vim.keymap.set(
+                { "n", "v" },
+                '<leader>xe',
+                require('nvim-emmet').wrap_with_abbreviation
+            )
+        end,
+    },
 }
