@@ -30,6 +30,13 @@ return {
 
 	{
 		--[[
+        Basic support for .env and Procfile
+        --]]
+
+		"tpope/vim-dotenv",
+	},
+	{
+		--[[
         User interface for vim-dadbod.
         --]]
 
