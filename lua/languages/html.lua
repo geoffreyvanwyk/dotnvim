@@ -31,7 +31,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 
-		opts = { ensure_installed = { "html" } },
+		opts = { ensure_installed = { "html", "css" } },
 	},
 	---- EXTERNAL TOOL INSTALLATION -----------------------------------------------
 	{
@@ -40,6 +40,7 @@ return {
 		opts = {
 			ensure_installed = {
 				"emmet-language-server",
+				"tailwindcss-language-server",
 			},
 		},
 	},
@@ -56,16 +57,28 @@ return {
 		},
 	},
 	---- EMMET & NEOVIM INTEGRATION ----------------------------------------------
-    {
-        "olrtg/nvim-emmet",
+	{
+		"olrtg/nvim-emmet",
 
-        config = function()
-            -- TODO: Move to mappings script
-            vim.keymap.set(
-                { "n", "v" },
-                '<leader>xe',
-                require('nvim-emmet').wrap_with_abbreviation
-            )
-        end,
-    },
+		config = function()
+			-- TODO: Move to mappings script
+			vim.keymap.set({ "n", "v" }, "<leader>xe", require("nvim-emmet").wrap_with_abbreviation)
+		end,
+	},
+	---- TAILWIND CSS ---------------------------------------------------------
+	{
+		"luckasRanarison/tailwind-tools.nvim",
+
+		name = "tailwind-tools",
+
+		build = ":UpdateRemotePlugins",
+
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-telescope/telescope.nvim", -- optional
+			"neovim/nvim-lspconfig", -- optional
+		},
+
+		opts = {}, -- your configuration
+	},
 }
