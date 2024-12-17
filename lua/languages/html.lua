@@ -33,17 +33,22 @@ return {
 
 		opts = { ensure_installed = { "html", "css" } },
 	},
+
 	---- EXTERNAL TOOL INSTALLATION -----------------------------------------------
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 		opts = {
 			ensure_installed = {
+				"css-lsp",
 				"emmet-language-server",
+				"html-lsp",
 				"tailwindcss-language-server",
+				"prettierd",
 			},
 		},
 	},
+
 	---- LANGUAGE SERVER CONFIGURATION -------------------------------------------
 	{
 		"williamboman/mason-lspconfig.nvim",
@@ -56,6 +61,7 @@ return {
 			},
 		},
 	},
+
 	---- EMMET & NEOVIM INTEGRATION ----------------------------------------------
 	{
 		"olrtg/nvim-emmet",
@@ -65,6 +71,7 @@ return {
 			vim.keymap.set({ "n", "v" }, "<leader>xe", require("nvim-emmet").wrap_with_abbreviation)
 		end,
 	},
+
 	---- TAILWIND CSS ---------------------------------------------------------
 	{
 		"luckasRanarison/tailwind-tools.nvim",
@@ -80,5 +87,20 @@ return {
 		},
 
 		opts = {}, -- your configuration
+	},
+
+	---- FORMATTING  -------------------------------------------------------------
+	{
+		"stevearc/conform.nvim",
+
+		opts = {
+			formatters_by_ft = {
+				blade = { "blade-formatter" },
+				css = { "prettier" },
+				html = { "prettier" },
+				less = { "prettier" },
+				scss = { "prettier" },
+			},
+		},
 	},
 }
